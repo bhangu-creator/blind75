@@ -1,2 +1,4 @@
 # blind75
-all the code for Blind 75 will be added in this repo
+Following is the purpose of this repo : 
+1. All the code for Blind 75 problems will be added inside this repo
+2. This repo is made for the purpose of tracking the progress of Blind 75 problems
