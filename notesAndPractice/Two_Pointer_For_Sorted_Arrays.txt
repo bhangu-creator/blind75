@@ -1,0 +1,11 @@
+Two Pointer Apporach :
+
+This approach will not work if the array is "sorted". Use "Merge sort" to sort the array first.
+
+Idea of approach :
+
+- There will be 2 pointers. One will start from left at 0 and other from right n-1
+- Then add these two nums[0]+nums[n-1]. Now if output is bigger than the target than obviously this means that we have to reduce
+the big part of our sum so this means that we should move the right pointer to left, it will get rid of the big part of sum
+- If the sum is less that the target then simply increase the left pointer to right it will increase the sum.
+- At the end you will find your sum
