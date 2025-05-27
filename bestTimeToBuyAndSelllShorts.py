@@ -16,6 +16,9 @@ class Solution:
                 preProfit=price-buy
                 if profit<preProfit:
                     profit=preProfit
+                    
+                #the above three line of code can also be written like this:
+                # profit = max(profit, price - buy)
         return profit
     
 sol= Solution()
