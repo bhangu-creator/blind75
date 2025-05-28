@@ -12,7 +12,7 @@ class Solution:
     
     #second approach is using math
     
-    def differenceOfSums(self, n: int, m: int) -> int:
+    def differenceOfSumsUsingMath(self, n: int, m: int) -> int:
         #first calculate the total of n numbers using the following formula
         total=n*(n+1)//2
         #then calculate how many multiples are there of m in n
@@ -25,6 +25,10 @@ class Solution:
         divisible=m*(k*(k+1)//2)
         #this is just simple , we needed sum of numbers not divivsible by m - sum of numbers divisible by m, so basically saying (total-divisible) - divisible which became total-2*divisible
         return total-(2*divisible)
+    
+sol=Solution()
+val=sol.differenceOfSumsUsingMath(50,20)
+print(val)
         
         
 
