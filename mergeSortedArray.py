@@ -36,9 +36,30 @@ class Solution:
             n=n-1                         #keep on decrementing the indexof nums2 to access all elements
             lastIndex=lastIndex-1         #keep on decrementing lastIndex value to get all the valid space in nums1
         print(nums1)
-            
+        
+        
+        #this my new version it is more readable and less complex refer to it for code 
+    def mergeNew(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+            lastIndex=len(nums1)-1
+            i=m-1
+            j=n-1
+            while i>=0 and j>=0:
+                if nums1[i]>=nums2[j]:
+                    nums1[lastIndex]=nums1[i]
+                    lastIndex-=1
+                    i-=1
+                else :
+                    nums1[lastIndex]=nums2[j]
+                    lastIndex-=1
+                    j-=1
+            while j>=0:
+                nums1[lastIndex]=nums2[j]
+                lastIndex-=1
+                j-=1
+            print(nums1)
 sol=Solution()
 sol.merge([0,0,0],0,[2,5,6],3)
+sol.mergeNew([0,0,0],0,[2,5,6],3)
 
 
         

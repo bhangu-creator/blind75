@@ -27,7 +27,7 @@ class Solution:
         return total-(2*divisible)
     
 sol=Solution()
-val=sol.differenceOfSumsUsingMath(50,20)
+val=sol.differenceOfSumsUsingMath(5,6)
 print(val)
         
         

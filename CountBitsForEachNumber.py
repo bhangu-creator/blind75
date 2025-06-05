@@ -18,6 +18,7 @@
 
 # So the formula becomes:
 #   bits[i] = bits[i >> 1] + (i & 1)
+#>> is used to divide the numbers with 2
 
 # This works for all i from 1 to n, and since we reuse the result of a smaller subproblem (i >> 1),
 # this is a perfect example of dynamic programming.
