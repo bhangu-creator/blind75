@@ -2,24 +2,27 @@ from typing import List
 
 
 class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort()
-        intervalArr=[]
-        for interval in range(0,len(intervals)):
-            if intervals[interval+1][0][1]<=intervals[interval][1] and intervals[interval+1][0][1]<=intervals[interval][0]:
-                intervalArr.append([intervals[interval][0],[intervals[interval][1]]])
-            elif interval[intervals+1][0]<=interval[interval][1]:
-                intervalArr.append([[interval[intervals][0],interval[intervals+1][1]]])
+
+    def findPivot(self,nums):
+        left,right=0,len(nums)-1
+        while left<=right:
+            mid=(left+right)//2
+            if mid<right:
+                right=mid
             else:
-                intervalArr.append([[interval]])
-        return intervalArr
-            
+                left=mid+1
+        return nums[left]
 
-        
+    def findMin(self, nums: List[int]) -> int:
+         pivot=self.findPivot(nums)
+         return pivot
 
 
+
+
+    
 sol=Solution()
-val=sol.productExceptSelf([1,2,3,4])
+val=sol.findMin([3,4,5,1,2])
 print(val)
 
 
