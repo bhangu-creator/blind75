@@ -2,27 +2,33 @@ from typing import List
 
 
 class Solution:
-
-    def findPivot(self,nums):
-        left,right=0,len(nums)-1
-        while left<=right:
-            mid=(left+right)//2
-            if mid<right:
-                right=mid
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s)==0:
+            return 0
+        uniqdict={}
+        left=length=0
+        maxlen=float('-inf')
+        for right in range(0,len(s)):
+            if s[right] not in uniqdict:
+                uniqdict[s[right]]=1
+                length+=1
+                maxlen=max(maxlen,length)
             else:
-                left=mid+1
-        return nums[left]
-
-    def findMin(self, nums: List[int]) -> int:
-         pivot=self.findPivot(nums)
-         return pivot
-
-
-
-
-    
+                while left<=right:
+                    if s[right] in uniqdict:
+                        del uniqdict[s[left]]
+                        left+=1
+                        length-=1
+                    else:
+                        uniqdict[s[right]]=1
+                        length+=1
+                        break
+        return maxlen
+        
+                        
+                 
 sol=Solution()
-val=sol.findMin([3,4,5,1,2])
+val=sol.lengthOfLongestSubstring("pwwkew")
 print(val)
 
 
