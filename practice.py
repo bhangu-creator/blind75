@@ -1,34 +1,30 @@
 from typing import List
-
+from collections import defaultdict
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s)==0:
-            return 0
-        uniqdict={}
-        left=length=0
-        maxlen=float('-inf')
-        for right in range(0,len(s)):
-            if s[right] not in uniqdict:
-                uniqdict[s[right]]=1
-                length+=1
-                maxlen=max(maxlen,length)
-            else:
-                while left<=right:
-                    if s[right] in uniqdict:
-                        del uniqdict[s[left]]
-                        left+=1
-                        length-=1
-                    else:
-                        uniqdict[s[right]]=1
-                        length+=1
-                        break
-        return maxlen
-        
-                        
+    def countSubstrings(self, s: str) -> int:
+        memo=defaultdict(lambda: False)
+        n=len(s)
+        count=0
+        for L in range(1,n+1):
+            i=0
+            while L+i-1<n:
+                j=L+i-1
+                if i==j:
+                    memo[(i,j)]=True
+                elif i+1==j:
+                    if s[i]==s[j]:
+                        memo[(i,j)]=True
+                else:
+                    if s[i]==s[j] and memo[(i+1,j-1)]:
+                        memo[(i,j)]=True
+                if memo[(i,j)]:
+                    count+=1
+                i+=1
+        return count   
                  
 sol=Solution()
-val=sol.lengthOfLongestSubstring("pwwkew")
+val=sol.countSubstrings("abasscjjjjckaiioakaaajjaa")
 print(val)
 
 
