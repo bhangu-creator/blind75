@@ -1,19 +1,23 @@
 
 
 class Solution:
-    def minMaxDifference(self, num: int) -> int:
-        smax=str(num)
-        smin=str(num)
-        remap=smax[0]
-        remin=smin[0]
+    def minMaxDifference(self, num: int) -> int:  #pacific ocean
+        for row in range(4):
+            for col in range(4):
+                print((row,col), end=' ')
+                if row!=0:
+                    break
+            print()
 
-        for i in range(len(smax)):
-            if smax[i]!='9':
-                remap=smax[i]
-        smax =smax.replace(remap, '9')
-        smin=smin.replace(remin,'0')
 
-        return int(smax)-int(smin)
+        
+        # for row in range(4):   #atlantic ocean
+        #     for col in range(4):
+        #         if row!=3 and col!=3:
+        #             continue
+        #         print((row,col), end=' ')
+
+        # print() 
         
 
 sol=Solution()
