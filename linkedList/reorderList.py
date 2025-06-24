@@ -36,6 +36,8 @@ class Solution:
     #now after putting all the 2nd half nodes in the stack, the loop will end when list reaches its end
     #now we will start a new loop which will be used to link the nodes of the original list to the nodes stored in the stack
     #when we reorder the list as the problem demands than we will point the last node to null which will ensure that our new reorderd list is valid
+    
+    #take a look at submissiono at 20-06-2025 on leetcode, optimal version is present
     def reorderList(self, head: Optional[ListNode]) -> None:
         length=0
         tempnode=head
