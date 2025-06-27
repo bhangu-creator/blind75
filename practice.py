@@ -1,37 +1,67 @@
-from typing import List
-from collections import defaultdict
+from typing import Optional
+from collections import deque
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
-    def minWindow(self, s: str, t: str) -> str:
-        freqs={}
-        freqt={}
-        left=0
-        required=len(t)
-        formed=start=end=0
-        minlength=float('inf')
-        for i in range(len(t)):
-            if t[i] not in freqt:
-                freqt[t[i]]=1
-            else:
-                freqt[t[i]]+=1
-        for right in range(len(s)):
-            if s[right] not in freqs:
-                freqs[s[right]]=1
-            else:
-                freqs[s[right]]+=1
-            if s[right] in freqt and freqs[s[right]]==freqt[s[right]]:
-                formed+=1
-            while required==formed:
-                windowlength=right-left+1
-                if windowlength<minlength:
-                    start=left
-                    end=right
-                    minlength=windowlength
-                if s[left] in freqt and freqs[s[left]]==freqt[s[left]]:
-                    formed-=1
-                freqs[s[left]]-=1
-                left+=1
-        return "" if minlength==float('inf') else s[start:end+1]
+    
+    def printTreeLevelOrder(self,root):
+        if not root:
+            return
+        queue = deque([root])
+        while queue:
+            node = queue.popleft()
+            print(node.val, end=" ")
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+                
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        isValid=True
+        if root is None:
+            return False
+        queue=deque([root])
+        rootVal=root.val
+        while queue:
+            curr=queue.popleft()
+            if curr.left:
+                if curr.left.val>=curr.val and curr.left.val>=rootVal:
+                    return False
+                else:
+                    queue.append(curr.left)
+            if curr.right:
+                if curr.right.val<=curr.val and curr.right.val<=rootVal:
+                    return False
+                else:
+                    queue.append(curr.right)
+        return True
 
+
+
+
+sol=Solution()
+firstNode=TreeNode(5)
+secondNode=TreeNode(4)
+thirdNode=TreeNode(6)
+fourthNode=TreeNode(3)
+fifthNode=TreeNode(7)
+# sixthNode=TreeNode(6)
+# seventhNode=TreeNode(9)
+firstNode.left=secondNode
+firstNode.right=thirdNode
+# secondNode.left=fourthNode
+# secondNode.right=fifthNode
+thirdNode.left=fourthNode
+thirdNode.right=fifthNode
+sol.printTreeLevelOrder(firstNode)
+validy=sol.isValidBST(firstNode)
+print(validy)
+sol.printTreeLevelOrder(firstNode)
+        
             
 
 
