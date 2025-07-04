@@ -2,6 +2,7 @@ from typing import List
 from collections import Counter
 
 class Solution:
+    #intuation is just use counter to count the frequencies and then just search if two pairs of frequencies exist which is x and x+1 and then just group them together and return the max output
     def findLHS(self, nums: List[int]) -> int:
         freq = Counter(nums)
         max_len = 0

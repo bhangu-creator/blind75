@@ -7,6 +7,8 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+    #intuation is very simple since BST has less than root values on left side and greater than root value on right side , and given array is sorted so we can split the array from half and then attach the left elements to left side and right elements to right side of tree 
+    #do this recursively and we will get the BST
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         def build(left,right):
             if left>=right:

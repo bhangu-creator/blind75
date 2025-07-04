@@ -8,6 +8,12 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+
+    #the intuation is :
+    #postorder is : Left->Right->Root, given this we can say that each element of postorder array's from back is a root to its subtree, so we now already know the root nodes of tree .
+    #inorder is : Left->Root->Right, given this if we pick the root from postorder and search it in inorder than we can say that all the elements to left of that element are going to be in its left subree and all the right are going to be in right subtree
+    #in this we will first create the tree from right then root and then left, doing this recursively will give us binary tree
+    #node : we can construct a unique tree always if inorder traversal is given with preorder or postorder
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         inorderIndexMap= {val:idx for idx,val in enumerate(inorder)}
         self.rootIndex=len(postorder)-1

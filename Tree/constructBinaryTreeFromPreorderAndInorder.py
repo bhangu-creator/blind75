@@ -10,6 +10,12 @@ class TreeNode:
 
 class Solution:
 
+    #the intuation is :
+    #preorder is : Root->Left->Right, given this we can say that each element of preorder array's is a root to its subtree, so we now already know the root nodes of tree .
+    #inorder is : Left->Root->Right, given this if we pick the root from preorder and search it in inorder than we can say that all the elements to left of that element are going to be in its left subree and all the right are going to be in right subtree
+    #so if we do this recursively and just created a root node at each recursion and then attach it to left and right on backtracking we will get the binary tree
+    #node : we can construct a unique tree always if inorder traversal is given with preorder or postorder
+
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         inorderIndexMap={ val: idx for idx, val in enumerate(inorder)}
         self.preorder_index=0

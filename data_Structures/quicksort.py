@@ -1,4 +1,8 @@
 class Solution:
+
+    #the idea is to just get a pivot element and then compare the rest of elements with that , and just group the elements smaller than pivot to left side and bigger to right side
+    #do this recursively and in end you will have a sorted array
+    #time complexity is O(nlogn) and space O(logn)
     def partition(self,arr,low,high):
         pivot=arr[high]
         i=low-1
@@ -14,6 +18,7 @@ class Solution:
             self.quicksort(arr,low,pi-1)
             self.quicksort(arr,pi+1,high)
     
+    #this is the pure recursive approach to return the sorted array instead of doing the sorting inplace
     def quicksortrecursion(self,nums):
         if len(nums)<=1:
             return nums

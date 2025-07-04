@@ -1,4 +1,7 @@
 class Solution :
+
+    #insertion sort is basically saying fixing nums[0] as sorted and then comparing each element after that with the sorted elements at left side and just keep on shifting them if the compared element is smaller then them and when a index is found where the element is not smaller just place that key element there
+    #time complexity is O(n)square and space complexity is O(1)
     def insertionSort(self,nums):
         for i in range(1,len(nums)):
             j=i-1

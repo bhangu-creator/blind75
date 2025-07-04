@@ -15,6 +15,8 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+    #a link list is basically a left skwered binary tree , we can only move forwards in link list so we have to build this tree from left side first and then root and then right side
+    #just keep on crrating nodes at each recursive step and we will be doing this from the far end of left side of tree and since list is sorted we will eventually get the BST
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         self.head=head
         fast=head
