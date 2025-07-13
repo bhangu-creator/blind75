@@ -1,41 +1,40 @@
 from collections import defaultdict
-from collections import Counter
-import random
+from collections import deque
 from typing import List
-import heapq
+
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        freq_map=defaultdict(int)
-        for num in nums:
-            freq_map[num]+=1
-        listofpairs=[(num,freq) for num,freq in freq_map.items()]
-        def partition(left,right,pivotIndex):
-            pivot=listofpairs[pivotIndex][1]
-            listofpairs[pivotIndex],listofpairs[right]=listofpairs[right],listofpairs[pivotIndex]
-            startIndex=left-1
-            for rightIndex in range(left,right):
-                if listofpairs[rightIndex][1]<pivot:
-                    startIndex+=1
-                    listofpairs[rightIndex],listofpairs[startIndex]=listofpairs[startIndex],listofpairs[rightIndex]   
-            listofpairs[startIndex+1],listofpairs[right]=listofpairs[right],listofpairs[startIndex+1]
-            return startIndex+1
-        def quickselect(left,right,kth):
-            if left==right:
-                return
-            pivotIndex=random.randint(left,right)
-            pivotIndex=partition(left,right,pivotIndex)
-            if k==pivotIndex:
-                return
-            if k<pivotIndex:
-                quickselect(left,pivotIndex-1,kth)
+    def maxFreeTime(self, eventTime: int, k: int, startTime: List[int], endTime: List[int]) -> int:
+        maxFreeTime=0
+        left=right=0
+        free=0
+        gap=0
+        startTime.append(eventTime)
+        endTime.append(eventTime)
+        print(startTime)
+        print(endTime)
+        while right<len(startTime):    
+            if (right-left)+1<=k+1:  
+                gap=startTime[right]-gap
+                free=free+gap
+                maxFreeTime=max(maxFreeTime,free)
+                gap=endTime[right]
+                right+=1
             else:
-                quickselect(pivotIndex+1,right,kth)
-        n=len(listofpairs)            
-        quickselect(0,n-1,n-k)
-        return [num for num,freq in listofpairs[n-k:]]
-
-
-
-            
-
+                if left==0:
+                    free=free-(startTime[left]-0)
+                    left+=1
+                else:
+                    free=free-(startTime[left]-endTime[left-1])
+                    left+=1
+        return maxFreeTime
         
+
+
+sol=Solution()
+bol=sol.maxFreeTime(34,2,[0,17],[14,19])
+print(bol)
+        
+
+
+
+
