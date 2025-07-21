@@ -1,35 +1,34 @@
 from collections import defaultdict
 from collections import deque
-from typing import Optional
+from typing import List
+import heapq
 
+heap=heapq
 
 class Solution:
-    def isValid(self, word: str) -> bool:
-        if len(word)<3:
-            return False
-        if not word.isalnum():
-            return False
-        vowel={'a':True,'e':True,'i':True,'o':True,'u':True,'v':True,'A':True,'E':True,'I':True,'O':True,'U':True,'V':True}
-        consonant={}
-        a=97
-        for _ in range(26):
-            consonant[chr(a)]=True
-            a+=1
+    def jump(self, nums: List[int]) -> int:
+        n=len(nums)
+        furthest_jump=nums[0]
+        steps=0
+        indx=0
+        while furthest_jump<n-1:
+            jump=furthest_jump
+            steps+=1
+            while indx<=jump:
+                furthest_jump=max(furthest_jump,nums[indx]+indx)
+                indx+=1
+            if furthest_jump>=n-1:
+                steps+=1
+                return steps  
+        steps+=1
+        return steps
 
-        isvowel=False
-        isconsonant=False
-        for i in range(len(word)):
-            if word[i].lower() in vowel or word[i].upper() in vowel:
-                isvowel=True
-            if word[i] in consonant:
-                isconsonant=True
-            if isvowel and isconsonant:
-                return True
-        return False
+
         
 
 sol=Solution()
-bol=sol.isValid("FFa")
+
+bol=sol.canJump([8,2,1,1,1,1,0,8,9])
 print(bol)
         
 
