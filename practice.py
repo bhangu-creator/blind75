@@ -4,31 +4,40 @@ import heapq
 from collections import deque
 from typing import Optional
 
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-        
 class Solution:
-    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return None
-        queue=deque()
-        queue.append(root)
-        while queue:
-            curr_node=queue.popleft()
-            if curr_node.left:
-                queue.append(curr_node.left)
-                left=curr_node.left
-            if curr_node.right:
-                queue.append(curr_node.right)
-                right=curr_node.right
-            curr_node.left,curr_node.right=right,left
-        return root
-        
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        down=True
+        retArr=[]
+        Row=len(mat)
+        Col=len(mat[0])
+        row,col=0,0
+        retArr.append(mat[row][col])
+        while row!=Row-1 and col!=Col-1:
+            if down:
+                col+=1
+                while True:
+                    retArr.append(mat[row][col])
+                    if col==0:
+                        break
+                    row+=1
+                    col-=1
+                down=False
+            else:
+                row+=1
+                while True:
+                    retArr.append(mat[row][col])
+                    if row==0:
+                        break
+                    row-=1
+                    col+=1
+                down=True
+        retArr.append(mat[row][col])
+        return retArr
+
+    
+
+sol=Solution()
+sol.findDiagonalOrder([[1,2,3],[4,5,6],[7,8,9]])
 
 
 
