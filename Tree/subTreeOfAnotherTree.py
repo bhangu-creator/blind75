@@ -1,6 +1,8 @@
 from typing import Optional
 
 # Definition for a binary tree node.
+#ok so this problem is excatly like the same tree problem, the intuation is that we are checking each root node of the root tree with subroot tree since each root of the tree can be 
+#classified as its own tree, and wherever we got a match we will return True, the time complexity is O(n*m) where n and m are nodes of respective trees and space is O(h) where h is the height of tree height of recursion stack
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val

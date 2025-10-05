@@ -4,6 +4,8 @@
 #time complexity for search if no dots are present is O(L) same logic as above, but if there are D dots then it becomes O(L * 26^D), since there are only 2 dots so it is O(l * 26^2)==O(L)
 #since all nodes stored characters upto 26 so space complexity becomes O(N*L)
 
+#the main thing to remember is the structure of trie... each value of a dict in trie holds its own trienode, like for trie['a'] will hold the 'a' TrieNode dict
+
 
 
 class TrieNode():

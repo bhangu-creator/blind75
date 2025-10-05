@@ -35,6 +35,9 @@ class Trie():
             node=node.children[ch]
         return True
 
+
+#the delete method intuation is very simple, here we first use depth which acts as index of string to get the character of the word instead of for loop , when the len word ==depth it means we are at the end of the word then , at the endwe check if it is a word by the isend check 
+#if it is not a word then we return False , but if it is then we simply changes the isEnd to true and send true if the node has no children and vice verca , the result of this will determine if we want to delete the curent node , if the nodes hasno children then we delete that node and also we the again check and return if that;s parent node has any children and if that is not again a word or not
     def delete(self,word):
         def _delete(node,word,depth=0):
             if not node:
