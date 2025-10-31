@@ -24,3 +24,4 @@ class Solution:
 
 #ok so the problem is pretty self explanotary so just followed the story to the code and used binary search for optimization
 #time is O(n)logm where n is length of piles arraya and m is the max pile value in array with O(1) space
+
